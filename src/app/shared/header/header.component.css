@@ -1,0 +1,33 @@
+@media (max-width: 767px) {
+    .navbar-collapse.collapsing .mobilenav-bar {display: block;position: fixed;top: 0;bottom: 0;left: -45%;
+    transition: all 0.2s ease;}
+    .navbar-collapse.show .mobilenav-bar {position: fixed;top: 0;bottom: 0;left: 0;flex-direction: column;
+    height: auto;width: 230px;transition: left 0.35s ease;box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    z-index: 9;background: #084C94;padding: 20px;}
+    .close-nav {position: absolute; text-shadow: none; opacity: 1; color: #fff;right: 20px;}
+    .navbar-overlay {position: fixed;z-index: 9;background: rgba(0, 0, 0, 0.83);width: 100%;top: 0px;
+    left: 0px;height: 100%;-webkit-animation: fadein 0.5s;-moz-animation: fadein 0.5s;-ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 0.5s;animation: fadein 0.5s;}
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @-moz-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @-ms-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @-o-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+}

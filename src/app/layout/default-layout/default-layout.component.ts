@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }  from "@angular/router";
 
 @Component({
   selector: 'app-default-layout',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default-layout.component.css']
 })
 export class DefaultLayoutComponent implements OnInit {
+  //showHead: boolean = false;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
 import { MessagesComponent } from './messages/messages.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     
   ],
   providers: [

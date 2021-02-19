@@ -1,0 +1,87 @@
+<div class="test-header">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div class="logo-speci"><a class="navbar-brand" routerLink="/"><img src="/assets/images/logo.png" style="max-width: 200px;"></a></div>
+            <div class="subject-speci">UPPCS 2021</div>
+            <div class="time-tracker"><countdown [config]="{ leftTime: 3600, format: 'm:s' }"></countdown></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="test-container">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Which of the following is correct about lifecycle hook - ngAfterContentChecked.
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+          
+              <div class="quastion-answer">
+                <mat-radio-group aria-label="Select an option" class="d-flex flex-column">
+                    <mat-radio-button value="1">This is called in response after Angular checks the content projected into the component.</mat-radio-button>
+                    <mat-radio-button value="2">This is called in response after Angular initializes the component's views and child views.</mat-radio-button>
+                    <mat-radio-button value="3">This is called in response after Angular checks the component's views and child views.</mat-radio-button>
+                    <mat-radio-button value="4">This is the cleanup phase just before Angular destroys the directive/component.</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+
+              <mat-action-row>
+                <button mat-button class="btn btn-primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                Which of the following is correct about systemjs.config.json?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+          
+              <div class="quastion-answer">
+                <mat-radio-group aria-label="Select an option" class="d-flex flex-column">
+                    <mat-radio-button value="5">'npm:': 'node_modules/' tells the location in our project where all the npm modules are located.</mat-radio-button>
+                    <mat-radio-button value="6">The mapping of app: 'app' tells the folder where all our applications files are loaded.</mat-radio-button>
+                    <mat-radio-button value="7">Both of the above.</mat-radio-button>
+                    <mat-radio-button value="8">None of the above.</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+          
+              <mat-action-row>
+                <button mat-button class="btn btn-dark" (click)="prevStep()">Previous</button>
+                <button mat-button class="btn btn-primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Which of the following is correct about TypeScript?
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+          
+              <div class="quastion-answer">
+                <mat-radio-group aria-label="Select an option" class="d-flex flex-column">
+                    <mat-radio-button value="5">Angular 2 is based on TypeScript.</mat-radio-button>
+                    <mat-radio-button value="6">This is a superset of JavaScript.</mat-radio-button>
+                    <mat-radio-button value="7">TypeScript is maintained by Microsoft.</mat-radio-button>
+                    <mat-radio-button value="8">All of the above.</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+          
+              <mat-action-row>
+                <button mat-button class="btn btn-dark" (click)="prevStep()">Previous</button>
+                <button mat-button class="btn btn-primary">Submit</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>
+    </div>
+</div>
+
+
+
+
+<div class="footerbottm"><div class="container text-center"><p>Copyright © 2021. All Rights Reserved</p></div></div>
+

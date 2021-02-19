@@ -1,5 +1,100 @@
 
-<div class="container">
+<div class="login-container d-flex mt-4">
+    <div class="my-auto w-100">
+        <div class="row mx-0">
+            <div class="col-sm-12 px-0">
+        <div class="container">
+            <div class="login-maxW mx-auto">
+            <div class="row">
+                <div class="col-md-12 col-lg-7">
+                    <div class="login-content">
+                    <h2>{{title}}</h2>
+                    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="firstName" class="form-control" placeholder="First Name *" />
+                                    <small class="error" *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)">
+                                    <div *ngIf="f.firstName.hasError('required')">This field is required.</div>
+                                </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="lastName" class="form-control" placeholder="Last Name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="username" class="form-control" placeholder="User Name *" />
+                                <small class="error" *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)">
+                                    <div *ngIf="f.username.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.username.hasError('pattern')">Only alphanumeric is allowed.</div>
+                                </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="email" class="form-control" placeholder="Enail Address *" />
+                                <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                                    <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.email.hasError('email')">Enter valid email address.</div>
+                                </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="password" type="password" class="form-control" placeholder="Enter Password *" />
+                                <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                                    <div *ngIf="f.password.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.password.hasError('minlength')">Password must be at least 6 characters.</div>
+                                </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input formControlName="passconf" type="password" class="form-control" placeholder="Enter Confirm Password *" />
+                                    <small class="error" *ngIf="f.passconf.invalid && (f.passconf.dirty || f.passconf.touched)">
+                                        <div *ngIf="f.passconf.hasError('required')">This field is required.</div>
+                                    </small>
+                                    <small class="error" *ngIf="signupForm.errors?.passwordmatch && (signupForm.dirty || signupForm.touched)">
+                                        Password and confirm password must be match.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-right mb-4 text-danger"><i>* Fields are mandatory</i></p>
+                    <button class="btn btn-block btn-primary" type="submit" [disabled]="signupForm.invalid">Signup</button>
+                    </form>
+                    <div class="signup-t">Already have an account? <a routerLink="/auth/login">Login Here</a></div>
+                    <!--{{signupForm.value | json}}-->
+                    </div>
+                </div>
+        
+                <div class="col-md-12 col-lg-5 mobilenone text-center">
+                    <div class="h-100 d-flex">
+                        <div class="my-auto w-100">
+                    <img src="/assets/images/login.png" class="img-fluid" alt="Login"/>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h1>{{title}}</h1>
@@ -106,4 +201,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
