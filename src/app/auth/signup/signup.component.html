@@ -10,6 +10,9 @@
                     <div class="login-content">
                     <h2>{{title}}</h2>
                     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                        <div *ngIf="err" class="">
+                            <div>{{err}}</div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -67,6 +70,21 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="courses" name="courses">
+                                        <option [ngValue]="null">Select an Option</option>
+                                        <option *ngFor="let course of courses" [value]="course.id">{{course.courseName}}</option>  
+                                    </select>
+                               
+                                </div>
+                            </div>
+                           
+                        </div>
+
+
                         <p class="text-right mb-4 text-danger"><i>* Fields are mandatory</i></p>
                     <button class="btn btn-block btn-primary" type="submit" [disabled]="signupForm.invalid">Signup</button>
                     </form>

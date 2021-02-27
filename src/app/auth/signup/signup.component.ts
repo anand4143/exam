@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
 import { passwordMatchValidator } from '../../shared/validation/password-match';
+import { CommonService } from 'src/app/services/common.service';
+// import { HttpErrorHandler, HandleError} from '../../services/http-error-handler.service';
+// import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,11 +18,21 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   model: User;
   title: string;
-  constructor( private fb: FormBuilder, private router: Router, private authService: AuthService) { }
+  courses: any;
+  defaultCourse: string = "Select course";
+  err: any;
+  constructor( private fb: FormBuilder, private router: Router, private authService: AuthService, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.title = "Let's Get Started";
     this.createForm();
+    this.commonService.getAllCourses().subscribe(
+      result => {
+        console.log("====> ",result['course']);
+        this.courses = result['course'];
+      }
+    );;
+
   }
   createForm(){
     this.signupForm = this.fb.group({
@@ -28,7 +41,8 @@ export class SignupComponent implements OnInit {
       lastName: ['',[Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       passconf: ['', Validators. required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      courses: [null, [Validators.required]],
     }, {validators: passwordMatchValidator });
   }
 
@@ -41,9 +55,16 @@ export class SignupComponent implements OnInit {
     this.model = this.signupForm.value;
     this.authService.signup(this.model).subscribe(
       (result) => {
-        if (! result.error){
-          this.router.navigateByUrl('/');
+        this.err = '';
+        if (!result){
+          this.router.navigateByUrl('/auth/login');
+        }else{
+          this.router.navigate(['/auth/login'],{queryParams:{msg: 'success'}});
         }
+      },
+      (error) => {
+        this.err = error;
+        console.log("Some error",error);
       }
     )
   }

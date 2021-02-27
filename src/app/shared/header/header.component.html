@@ -65,9 +65,12 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/">Contact Us</a>
                 </li>
-              <li class="nav-item mt-2 mt-md-0">
-                  <a class="btn btn-secondary btn-block btn-login" routerLink="/auth/login">Login</a>
+              <li class="nav-item mt-2 mt-md-0" >
+                  <a class="btn btn-secondary btn-block btn-login" *ngIf="!loginFlag"  (click)="login()">Login</a>
                 </li> 
+                <li class="nav-item mt-2 mt-md-0" >
+                <a class="btn btn-secondary btn-block btn-login" *ngIf="loginFlag"   (click)="logout()">Logout</a>
+                </li>
             </ul>
       </div>
       </div>

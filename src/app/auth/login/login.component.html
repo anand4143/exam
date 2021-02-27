@@ -2,44 +2,61 @@
     <div class="my-auto w-100">
         <div class="row mx-0">
             <div class="col-sm-12 px-0">
-        <div class="container">
-            <div class="login-maxW mx-auto">
-            <div class="row">
-                <div class="col-md-12 col-lg-6">
-                    <div class="login-content">
-                    <h2>Login to your account</h2>
-                    <div class="form-group">
-                        <i class="icon-user icons"></i>
-                        <input type="text" class="form-control" placeholder="Enter User Name"/>
-                        <!--<span class="error-type">Please enter Correct user name</span>-->
+                <div class="container">
+                    <div class="login-maxW mx-auto">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="login-content">
+                                    <h2>Login to your account</h2>
+                                    <div *ngIf="err" class="">
+                                        <div>{{err}}</div>
+                                    </div>
+                                    <div *ngIf="successMsg" class="">
+                                        <div>{{successMsg}}</div>
+                                    </div>
+                                    <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-group">
+                                            <i class="icon-user icons"></i>
+                                            <input type="text" class="form-control" formControlName="username"
+                                                [ngClass]="{ 'is-invalid': submmited && f.username.errors }"
+                                                placeholder="Enter User Name" />
+                                            <div *ngIf="submmited && f.username.errors" class="invalid-feedback">
+                                                <div *ngIf="f.username.errors.required">Username is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <i class="icon-lock icons"></i>
+                                            <!-- <input type="password" class="form-control" placeholder="Password"/> -->
+                                            <!--<span class="error-type">Password is wrong</span>-->
+                                            <input type="password" formControlName="password" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submmited && f.password.errors }" />
+                                            <div *ngIf="submmited && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="remember">
+                                                <mat-checkbox class="re-checkbox">Remember</mat-checkbox>
+                                            </div>
+                                            <div class="forgotpass ml-auto"><a href="#">Forgot Your Password ?</a></div>
+                                        </div>
+                                        <button type="submit" class="btn btn-block btn-primary">Login</button>
+                                        <div class="signup-t">Don’t have an account? <a routerLink="/auth/signup">Signup Here</a></div>
+                               
+                            </form>
+                            </div>
+
+                            <div class="col-md-12 col-lg-6 mobilenone text-center">
+                                <div class="h-100 d-flex">
+                                    <div class="my-auto w-100">
+                                        <img src="/assets/images/login.png" class="img-fluid" alt="Login" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <i class="icon-lock icons"></i>
-                        <input type="password" class="form-control" placeholder="Password"/>
-                        <!--<span class="error-type">Password is wrong</span>-->
-                    </div>
-                    <div class="d-flex">
-                    <div class="remember"> 
-                        <mat-checkbox class="re-checkbox">Remember</mat-checkbox>
-                    </div>
-                    <div class="forgotpass ml-auto"><a href="#">Forgot Your Password ?</a></div>
-                </div>
-                    <button class="btn btn-block btn-primary" routerLink="/Test_Online/Test">Login</button>
-                    <div class="signup-t">Don’t have an account? <a routerLink="/auth/signup">Signup Here</a></div>
-                    </div>
-                </div>
-        
-                <div class="col-md-12 col-lg-6 mobilenone text-center">
-                    <div class="h-100 d-flex">
-                        <div class="my-auto w-100">
-                    <img src="/assets/images/login.png" class="img-fluid" alt="Login"/>
-                </div>
-                </div>
                 </div>
             </div>
-            </div>
-        </div>
-        </div>
         </div>
     </div>
 </div>
